@@ -7,31 +7,31 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/users")
-public class UserController {
-  private final UserService userService;
+public class LibUserController {
+  private final LibUserService libUserService;
 
   @Autowired
-  public UserController(UserService userService) { this.userService = userService; }
+  public LibUserController(LibUserService libUserService) { this.libUserService = libUserService; }
 
   @GetMapping
-  public List<User> getAllUsers() { return userService.getUsers(); }
+  public List<LibUser> getAllUsers() { return libUserService.getUsers(); }
 
   @GetMapping(path = "{userId}")
-  public List<User> getUser(@PathVariable("userId") Long userId) { return userService.getUser(userId); }
+  public LibUser getUser(@PathVariable("userId") Long userId) { return libUserService.getUser(userId); }
 
   @PostMapping
-  public void registerNewUser(@RequestBody User user) {
-    userService.addNewUser(user);
+  public void registerNewUser(@RequestBody LibUser user) {
+    libUserService.addNewUser(user);
   }
 
   @PutMapping(path = "{userId}")
   public void updateUser(@PathVariable("userId") Long userId, @RequestParam(required = false) String username, @RequestParam(required = true) String oldPassword, @RequestParam(required = false) String newPassword, @RequestParam(required = false) String email) {
-    userService.updateUser(userId, username, oldPassword, newPassword, email);
+    libUserService.updateUser(userId, username, oldPassword, newPassword, email);
   }
 
   @DeleteMapping(path = "{userId}")
   public void deleteUser(@PathVariable("userId") Long userId, @RequestParam(required = false) String password) {
-    userService.deleteUser(userId);
+    libUserService.deleteUser(userId);
   }
 
 }

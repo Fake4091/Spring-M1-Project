@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table
-public class User {
+public class LibUser {
   @Id
   @SequenceGenerator(
       name = "user_sequence",
@@ -20,17 +20,17 @@ public class User {
   private String password;
   private String email;
 
-  public User() {
+  public LibUser() {
   }
 
-  public User(Long id, String username, String password, String email) {
+  public LibUser(Long id, String username, String password, String email) {
     this.id = id;
     this.username = username;
     this.password = password;
     this.email = email;
   }
 
-  public User(String username, String password, String email) {
+  public LibUser(String username, String password, String email) {
     this.username = username;
     this.password = password;
     this.email = email;
